@@ -27,3 +27,9 @@ Triangle.prototype.constructor = Triangle;
 var my = new Triangle(5, 10);
 console.log( my.getArea() );
 console.log( my.toString() );
+
+function testing() {
+	console.log('jsut');
+}
+
+testing();
