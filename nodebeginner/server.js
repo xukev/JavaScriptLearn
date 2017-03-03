@@ -1,15 +1,16 @@
 var http = require("http");
 var url = require("url");
 
-function start(route) {
+function start(route, handle) {
     function onRequest(req, res) {
         var pathname = url.parse(req.url).pathname;
         console.log("Request " + pathname + "received");
 
-        route(pathname);
-
         res.writeHead(200, { "Content-Type": "text/plain" });
-        res.write("Hello, world!");
+        var content = route(handle, pathname);
+        if (typeof content === 'string') {
+            res.write(content);
+        }
         res.end();
     }
 
